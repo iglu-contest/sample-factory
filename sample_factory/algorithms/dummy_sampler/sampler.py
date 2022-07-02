@@ -76,8 +76,8 @@ class DummySampler(AlgorithmBase):
         # creating an environment in the main process tends to fix some very weird issues further down the line
         # https://stackoverflow.com/questions/60963839/importing-opencv-after-importing-pytorch-messes-with-cpu-affinity
         # do not delete this unless you know what you're doing
-        tmp_env = create_env(self.cfg.env, cfg=self.cfg, env_config=None)
-        tmp_env.close()
+        # tmp_env = create_env(self.cfg.env, cfg=self.cfg, env_config=None)
+        # tmp_env.close()
 
         for i in range(self.cfg.num_workers):
             p = multiprocessing.Process(target=self.sample, args=(i, ))
