@@ -243,7 +243,7 @@ class APPO(ReinforcementLearningAlgorithm):
         # we should not use CUDA in the main thread, only on the workers
         set_global_cuda_envvars(cfg)
 
-        tmp_env = make_env_func(self.cfg, env_config=None)
+        tmp_env = make_env_func(self.cfg, env_config={'fake': True}) # IGLU change: crate fake env here
         self.obs_space = tmp_env.observation_space
         self.action_space = tmp_env.action_space
         self.num_agents = tmp_env.num_agents
